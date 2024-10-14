@@ -208,7 +208,10 @@ fun MMC_Infinite(innerPadding: PaddingValues) {
         CalculationResult(
             queueResult = queueResult!!,
             innerPadding = innerPadding,
-            onReturn = { queueResult = null },
+            onReturn = {
+                queueResult = null
+                updateDirectionsAvailability()
+            },
             updateIterations = ::updateIterations
         )
     }

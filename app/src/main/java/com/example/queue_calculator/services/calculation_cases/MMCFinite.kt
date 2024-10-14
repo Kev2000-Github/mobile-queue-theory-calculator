@@ -40,7 +40,7 @@ class MMCFinite: ICalculator {
             val currentProb = when {
                 i < numberServers -> (rho.pow(i) / factorial(i.toDouble())) * p0
                 i in numberServers .. maxCapacity -> (rho.pow(i) /
-                        (factorial(numberServers.toDouble()) * rho.pow(i - numberServers))) * p0
+                        (factorial(numberServers.toDouble()) * numberServers.toDouble().pow(i - numberServers))) * p0
                 else -> 0.0
             }
 

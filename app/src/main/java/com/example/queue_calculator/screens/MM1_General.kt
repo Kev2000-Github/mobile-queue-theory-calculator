@@ -328,7 +328,10 @@ fun MM1_General(innerPadding: PaddingValues) {
         CalculationResult(
             queueResult = queueResult!!,
             innerPadding = innerPadding,
-            onReturn = { queueResult = null },
+            onReturn = {
+                queueResult = null
+                updateDirectionsAvailability()
+            },
             updateIterations = ::updateIterations
         )
     }

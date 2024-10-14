@@ -4,11 +4,8 @@ import com.example.queue_calculator.services.ICalculationProps
 import io.konform.validation.Validation
 import io.konform.validation.jsonschema.minimum
 
-val validateMMCInfiniteProps = Validation {
+val validateMMCInfiniteProps = Validation<ICalculationProps> {
     ICalculationProps::inOutAvg onEach {
-        addConstraint("La tasa de servicio debe ser mayor a la tasa de llegada") {
-            it.lambda < it.miu
-        }
         addConstraint("lambda debe ser mayor a 0") {
             it.lambda > 0
         }
@@ -19,5 +16,10 @@ val validateMMCInfiniteProps = Validation {
 
     ICalculationProps::numberServers {
         minimum(1) hint "Debe haber al menos un servidor"
+    }
+
+    addConstraint("La tasa de servicio * numero de servidores debe ser mayor a la tasa de llegada") {
+        val isValidRate = it.inOutAvg.all { inout -> inout.lambda < inout.miu * it.numberServers }
+        return@addConstraint isValidRate
     }
 }

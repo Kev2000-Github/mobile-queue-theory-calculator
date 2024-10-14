@@ -71,7 +71,7 @@ fun MMC_Finite_Screen(navController: NavController) {
             topBar = {
                 TopBar(
                     navController = navController,
-                    title = "MMC Infinito"
+                    title = "MMC Finito"
                 )
             }
         ) { innerPadding ->
@@ -214,7 +214,10 @@ fun MMC_Finite(innerPadding: PaddingValues) {
         CalculationResult(
             queueResult = queueResult!!,
             innerPadding = innerPadding,
-            onReturn = { queueResult = null },
+            onReturn = {
+                queueResult = null
+                updateDirectionsAvailability()
+            },
             updateIterations = ::updateIterations
         )
     }
