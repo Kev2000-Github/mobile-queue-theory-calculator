@@ -2,7 +2,6 @@ package com.example.queue_calculator.schemas
 
 import com.example.queue_calculator.services.CostCalculationProps
 import io.konform.validation.Validation
-import io.konform.validation.jsonschema.minimum
 
 val validateCostCalculationProps = Validation<CostCalculationProps> {
     CostCalculationProps::fixedData required {
