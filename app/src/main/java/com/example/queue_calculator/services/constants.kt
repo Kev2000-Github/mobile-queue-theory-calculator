@@ -15,7 +15,7 @@ enum class QueueType {
     MMC_GENERAL,
 }
 
-const val DECIMAL_PLACES = 6
+const val DECIMAL_PLACES = 2
 
 data class QueueProbability (
     val probability: Double,
@@ -38,9 +38,33 @@ data class ICalculationProps(
     val inOutAvg: List<InOutAvg>
 )
 
+data class FixedCostCalculationProps(
+    val lambda: Double,
+    val maxCapacity: Int,
+    val waitCost: Double
+)
+
+data class VariableCostCalculationProps(
+    val miu: Double,
+    val numberServers: Int,
+    val cost: Double,
+)
+
+data class CostCalculationProps(
+    val variableData: List<VariableCostCalculationProps>,
+    val fixedData: FixedCostCalculationProps
+)
+
 data class InOutAvg(
     val type: InOutType,
     val numberAnchor: Int,
     val lambda: Double,
     val miu: Double
+)
+
+data class CostResult(
+    val l: Double,
+    val eoc: Double,
+    val ewc: Double,
+    val etc: Double
 )

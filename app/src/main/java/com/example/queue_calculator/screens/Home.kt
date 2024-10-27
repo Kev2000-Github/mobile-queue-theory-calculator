@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.queue_calculator.navigation.COST_FIXED_VALUES
 import com.example.queue_calculator.navigation.MM1_FINITE
 import com.example.queue_calculator.navigation.MM1_GENERAL
 import com.example.queue_calculator.navigation.MM1_INFINITE
@@ -65,6 +66,7 @@ fun MenuGridView(navController: NavController) {
         MenuOption(MM1_GENERAL,"general", "MM1"),
         MenuOption(MMC_INFINITE,"infinito", "MMC"),
         MenuOption(MMC_FINITE,"finito", "MMC"),
+        MenuOption(COST_FIXED_VALUES,"costos", "MMC"),
     )
     LazyVerticalGrid(columns = GridCells.Fixed(3), modifier = Modifier.padding(10.dp)) {
         items(menuOptions) { option ->
